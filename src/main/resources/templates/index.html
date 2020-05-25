@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<title>Inicio</title>
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="d-flex flex-column justify-content-center align-items-center">
+			<h1 class="mt-2">Ingresar contribuyente</h1>
+			<div class="card col-sm-8 mt-2">
+				<div class="card-body">
+					<form th:action="@{/insertar}" th:object="${contribuyente}" method="post">
+			  			<div class="form-group">
+			    			<label>Nombre:</label>
+			    			<input type="text" class="form-control" placeholder="Ingrese el nombre del contribuyente" th:field="*{nombre}">
+			  			</div>
+			  			<div class="form-group">
+			  				<label>Apellido:</label>
+			    			<input type="text" class="form-control" placeholder="Ingrese el apellido del contribuyente" th:field="*{apellido}">
+			  			</div>
+			  			<div class="form-group">
+			    			<label>NIT:</label>
+			    			<input type="text" class="form-control" placeholder="XXXXXXXXXXXXXX" th:field="*{nit}">
+			  			</div>
+						<div class="form-group">
+							<label>Importancia</label>
+							<select class="form-control" th:field="*{cImportancia}">
+								<th:block th:each="i, row:${importancias}">
+									<option th:text="${i.importancia}" th:value="${i.cImportancia}"></option>
+								</th:block>
+							</select>
+						</div>
+			  			<input class="btn btn-success" type="submit" value="Guardar">
+			  		</form>
+			  	</div>
+			</div>
+			<a type="button" class="btn btn-info btn-lg mt-2 col-sm-4" href="/listado">Ver contribuyentes</a>
+		</div>
+	</div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>
